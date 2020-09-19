@@ -1,37 +1,41 @@
-# USER STORIES
-
-### As a ______ , I can ______ , because ______ .
+## USER STORIES
 
 <br>
 
-* As a user, I can see a list of **maps**, because I want to see a list of **maps** other **users** have created!
-
-<br>
+* As a user, I can see a list of maps, because I want to see a list of maps other users have created!
 
 * As a user, I can view a map, because I want to see interesting things in my area!
 
-<br>
-
 * As an authenticated user, I can create maps, because I want to personalize my maps!
-
-<br>
 
 * An an authenticated user, I can modify maps, because I want to add, edit, or remove points in the map!
 
-<br>
-
 * As a user, I can favorite a map, because I want to see my favorite maps easily!
-
-<br>
 
 * As a user, I can have a profile, because I want to be able to indicate my favorite maps, and the maps I have contributed to!
 
-## Maps
-
-<br>
+## MAPS
 
 * a map can contain many points
 
+* each point can have: a title, description, and image
+
+## E.R.D.
+
 <br>
 
-* each point can have: a title, description, and image
+!["WIKI-MAP-ERD"](https://github.com/davemgj84/Midterm-LHL/blob/master/planning/WIKI-MAP.jpg?raw=true)
+
+## ROUTES
+
+* GET /maps
+* GET /maps/:id
+* POST /maps/:id/edit
+* POST /maps/:id/delete
+* POST /maps/new - Ask mentor?
+* GET /users - Ask mentor?
+* GET /users/:id - Ask mentor?
+
+## MVP GOALS
+
+## STRECT GOALS
