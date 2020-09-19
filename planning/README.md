@@ -24,7 +24,7 @@
 
 <br>
 
-!["WIKI-MAP-ERD"]()
+!["WIKI-MAP-ERD"](https://github.com/davemgj84/Midterm-LHL/blob/master/planning/WIKI-MAP.jpg?raw=true)
 
 ## ROUTES
 
