@@ -27,6 +27,7 @@
 * GET /maps
 * GET /maps/:id
 * GET /users/:id
+* GET /users/:id/favorites
 * POST /maps/:id/edit
 * POST /maps/:id/delete
 * POST /maps/new

@@ -6,16 +6,15 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 module.exports = (db) => {
+
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM widgets`;
-    console.log(query);
-    db.query(query)
+    db.query(`SELECT * FROM maps;`)
       .then(data => {
-        const widgets = data.rows;
-        res.json({ widgets });
+        const maps = data.rows;
+        res.json({ maps });
       })
       .catch(err => {
         res
@@ -23,5 +22,22 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get("/:id", (req, res) => {
+    const values = req.params.id;
+    db.query(`SELECT * FROM maps
+    WHERE id = $1;`, [values])
+      .then(data => {
+        const maps = data.rows[0];
+        res.json({ maps });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
+
 };
