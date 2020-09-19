@@ -20,7 +20,7 @@
 
 ## E.R.D.
 
-!["WIKI-MAP-ERD"](https://github.com/davemgj84/Midterm-LHL/blob/master/planning/WIKI-MAP.jpg?raw=true)
+!["WIKI-MAP-ERD"](https://github.com/davemgj84/Midterm-LHL/blob/master/planning/Wiki-map-ERD.jpg?raw=true)
 
 ## ROUTES
 * Mockup Login?
