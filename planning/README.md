@@ -1,7 +1,5 @@
 ## USER STORIES
 
-<br>
-
 * As a user, I can see a list of maps, because I want to see a list of maps other users have created!
 
 * As a user, I can view a map, because I want to see interesting things in my area!
@@ -22,20 +20,19 @@
 
 ## E.R.D.
 
-<br>
-
 !["WIKI-MAP-ERD"](https://github.com/davemgj84/Midterm-LHL/blob/master/planning/WIKI-MAP.jpg?raw=true)
 
 ## ROUTES
-
+* Mockup Login?
 * GET /maps
 * GET /maps/:id
+* GET /users/:id
 * POST /maps/:id/edit
 * POST /maps/:id/delete
-* POST /maps/new - Ask mentor?
-* GET /users - Ask mentor?
-* GET /users/:id - Ask mentor?
+* POST /maps/new
 
 ## MVP GOALS
 
-## STRECT GOALS
+## STRETCH GOALS
+* GET /login
+* POST /login (mockup page)
