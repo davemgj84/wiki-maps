@@ -40,4 +40,4 @@
 
 ## Initial Mockup 
 
-!["WIKI-MAP-MOCKUP"]()
+!["WIKI-MAP-MOCKUP"](https://github.com/davemgj84/Midterm-LHL/blob/routes/planning/Mockup%20-%20Wiki-map.png?raw=true)
