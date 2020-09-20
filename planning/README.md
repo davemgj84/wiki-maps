@@ -37,6 +37,7 @@
 ## STRETCH GOALS
 * GET /login
 * POST /login (mockup page)
+* Allow user maps to be public or private?
 
 ## Initial Mockup 
 
