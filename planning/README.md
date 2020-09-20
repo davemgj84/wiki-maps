@@ -37,3 +37,7 @@
 ## STRETCH GOALS
 * GET /login
 * POST /login (mockup page)
+
+## Initial Mockup 
+
+!["WIKI-MAP-MOCKUP"]()
