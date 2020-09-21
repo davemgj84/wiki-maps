@@ -30,7 +30,9 @@
 * GET /users/:id/favorites
 * POST /maps/:id/edit
 * POST /maps/:id/delete
-* POST /maps/new
+* GET /maps/new
+* POST /maps (creates a new map)
+* POST /maps/:id/locations (updating location data)
 
 ## MVP GOALS
 
