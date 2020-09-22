@@ -9,8 +9,11 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
+
+  router.get("/:id", (req, res) => {
+    const values = req.params.id;
+    db.query(`SELECT * FROM maps
+    WHERE user_id = $1;`, [values])
       .then(data => {
         const users = data.rows;
         res.json({ users });
@@ -21,5 +24,22 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get("/:id/favorites", (req, res) => {
+    const values = req.params.id;
+    db.query(`SELECT * FROM favorites
+    WHERE user_id = $1;`, [values])
+      .then(data => {
+        const favorites = data.rows;
+        res.json({ favorites });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
+
 };
