@@ -44,7 +44,7 @@ module.exports = (db) => {
 
   // redirect to create new map page
   router.get("/new", (req, res) => {
-    res.redirect('#new page form change me#')
+    res.redirect('#new-map-page-redirect-me#')
   });
 
   // Creates new map
