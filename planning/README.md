@@ -35,6 +35,7 @@
 * DELETE /maps/:id/delete - DONE
 
 ## MVP GOALS
+* Populate forms with existing data when editing locations - users can then edit what they want and re-submit
 
 ## STRETCH GOALS
 * GET /login
