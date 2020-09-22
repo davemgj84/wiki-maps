@@ -24,15 +24,15 @@
 
 ## ROUTES
 * Mockup Login?
-* GET /maps
-* GET /maps/:id
-* GET /users/:id
-* GET /users/:id/favorites
-* POST /maps/:id/edit
-* POST /maps/:id/delete
-* GET /maps/new
-* POST /maps (creates a new map)
-* POST /maps/:id/locations (updating location data)
+* GET /maps - DONE
+* GET /maps/:id - DONE
+* GET /users/:id - DONE
+* GET /users/:id/favorites - DONE
+* GET /maps/new - DONE (need redirect location)
+* POST /maps (creates a new map) - DONE
+* POST /maps/:id/locations (updating location data) - DONE
+* PATCH /maps/:id/edit - DONE
+* DELETE /maps/:id/delete - DONE
 
 ## MVP GOALS
 
