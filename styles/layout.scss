@@ -1,9 +1,22 @@
 // See: https://sass-lang.com/
 
-body {
-  background-color: #EEE;
+body #map, body #side-bar {
+  display: flex;
+  flex-direction: row;
 
   h1 {
     color: #244751;
   }
 }
+
+body #side-bar {
+  flex-direction: column;
+}
+
+#map {
+  height: 92vh;
+  width: 75vw;
+  float: right;
+}
+
+

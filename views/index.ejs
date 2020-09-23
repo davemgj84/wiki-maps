@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>Home Page</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/side-bar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav-bar.css" type="text/css" />
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+  <script src="https://kit.fontawesome.com/7aa139eb66.js" crossorigin="anonymous"></script>
+</head>
+<nav>
+  <span id="logo">WIKI-MAPS</span>
+  <ul class="nav-links">
+    <li id="create"> Create </li>
+    <li id="my-maps"> My Maps </li>
+    <li id="browse"> Browse </li>
+    <li id="logout"> Logout </li>
+  </ul>
+  <!-- <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div> -->
+</nav>
+<body>
+  <div id="map"></div>
+  <section id="side-bar">
+
+    <!-- This needs to be something other than a p tag? -->
+    <h3>Maps</h3>
+    <section class="items"></section>
+
+  </section>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- <script type="text/javascript" src="/scripts/map.js" ></script> -->
+  <script type="text/javascript" src="/scripts/burger.js" ></script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=places&key=AIzaSyC6teXwyuczlEAwEQy6QRILanoFQFEia3Y">
+  </script>
+</body>
 </html>

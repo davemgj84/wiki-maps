@@ -1,0 +1,50 @@
+#side-bar {
+  height: 92vh;
+  width: 25vw;
+  margin-top: 8vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #566861;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  color: #FFFF;
+  p {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #FFFF;
+    padding: 2em;
+  }
+  .map-link {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+    cursor: pointer;
+  }
+  .edit{
+    padding-right: 1em;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+  }
+  .delete {
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .new-map {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+    cursor: pointer;
+    color: #FFFF;
+  }
+}

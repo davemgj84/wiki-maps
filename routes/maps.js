@@ -17,7 +17,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM maps;`)
       .then(data => {
         const maps = data.rows;
-        res.json({ maps });
+        res.json({maps});
       })
       .catch(err => {
         res
@@ -61,6 +61,22 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
+  });
+
+  //Retrieve all locations from a specific map
+  router.get("/:id/locations", (req, res) => {
+    const values = req.params.id;
+    db.query(`SELECT * FROM locations
+    WHERE map_id = $1`, [values])
+    .then(data => {
+      const maps = data.rows;
+      res.json({ maps });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
   });
 
   // Creates new locations for a specific map - test again

@@ -47,7 +47,7 @@ app.use("/maps", mapsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.redirect("/maps");
+  res.render("index");
 });
 
 app.listen(PORT, () => {
