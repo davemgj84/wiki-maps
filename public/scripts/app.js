@@ -82,6 +82,56 @@ $(document).ready(() => {
     }, 100);
   });
 
-})
+  let marcadores = [];
+  const input = document.getElementById('search');
+  const searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.LEFT_TOP].push(input);
+
+  searchBox.addListener('places_changed', () => {
+    let places = searchBox.getPlaces();
+    if(places.length === 0)
+  return;
+
+
+marcadores.forEach((currentMarker) => {
+  //to get rid of the map reference within that market
+  currentMarker.setMap(null); });
+  marcadores = [];
+
+  const bounds = new google.maps.LatLngBounds();
+  places.forEach(function (p) {
+    if (!p.geometry) {
+      return;
+    }
+    marcadores.push(new google.maps.Marker({
+      map: map,
+      title: p.name,
+      position: p.geometry.location,
+      draggable:true
+    }))
+
+    if (p.geometry.viewport) {
+      // Extends this bounds to contain the union of this and the given bounds.
+      bounds.union(p.geometry.viewport);
+    } else {
+      bounds.extend(p.geometry.location)}
+      // console.log('name:',p.name)
+      // console.log('lat:',p.geometry.location.lat())
+      // console.log('lng:',p.geometry.location.lng())
+      // console.log('markers4:', markers)
+
+      const output = `<ul class='infoCoord'>
+      <li id="lat">${p.name}</li>
+      <li id="lat">${p.geometry.location.lat()}</li>
+      <li id="lng">${p.geometry.location.lng()}</li>
+      </ul>`;
+        // $('.submit').click(function () {
+      document.getElementById('infoCoord').innerHTML = output;
+        // });
+    });
+    // adjust the viewport of the map
+  map.fitBounds(bounds);
+ })
+});
 
 
