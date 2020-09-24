@@ -40,6 +40,20 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/:id/favorites", (req, res) => {
+    const values = [req.params.id, req.body.map_id];
+    db.query(`INSERT INTO favorites (user_id, map_id) VALUES ($1, $2)`, values)
+    .then(data => {
+      const favorites = data.rows;
+      res.json({ favorites });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  })
+
   return router;
 
 };
