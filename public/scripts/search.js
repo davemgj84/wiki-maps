@@ -1,3 +1,4 @@
+let markers;
 function initMap() {
   const options = {
     zoom: 12,
@@ -33,10 +34,10 @@ function initMap() {
     if (places.length === 0)
       return;
     //otherwise we want to continue on
-    markers.forEach((currentMarker) => {
+    // markers.forEach((currentMarker) => {
       //to get rid of the map reference within that market
-      currentMarker.setMap(null);
-    });
+    //   currentMarker.setMap(null);
+    // });
     // markers = [];
     console.log('markers1:', markers)
     console.log('places2', places)
@@ -49,20 +50,29 @@ function initMap() {
         return;
       }
 
-      const markers = new google.maps.Marker({
+      const marker = new google.maps.Marker({
         map: map,
         title: p.name,
         position: p.geometry.location,
         draggable: true
       })
+      markers.push(marker);
+      marker.pinId = markers.length;
 
-      google.maps.event.addListener(markers, 'dragend', function() {
-        console.log('new', markers.getPosition().lat())
-        console.log('new', markers.getPosition().lng())
+      google.maps.event.addListener(marker, 'dragend', function() {
+        console.log('new', marker.getPosition().lat())
+        console.log('new', marker.getPosition().lng())
+        $(`#location${marker.pinId} .lat`).val(marker.getPosition().lat());
+        $(`#location${marker.pinId} .long`).val(marker.getPosition().lng());
       })
-      console.log('markers3:', markers)
-      console.log('LAT:', markers.position.lat())
-      console.log('LONG:', markers.position.lng())
+      console.log('markers3:', marker)
+      console.log('LAT:', marker.position.lat())
+
+      // find the right input
+      $(`#location${marker.pinId} .lat`).val(marker.position.lat());
+      $(`#location${marker.pinId} .long`).val(marker.position.lng());
+      // put the lat in the input
+      console.log('LONG:', marker.position.lng())
       console.log('p:', p.formatted_address)
 
       if (p.geometry.viewport) {
@@ -77,5 +87,6 @@ function initMap() {
     });
     // adjust the viewport of the map
     map.fitBounds(bounds);
+    return markers;
   })
 }

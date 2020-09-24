@@ -27,18 +27,24 @@ $(document).ready(() => {
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
+        <input type="text" class="lat" placeholder="latitude">
+        <input type="text" class="long" placeholder="longitude">
       </div>
       <div id="location2">
       <h2>Location two</h2>
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
+        <input type="text" class="lat" placeholder="latitude">
+        <input type="text" class="long" placeholder="longitude">
       </div>
       <div id="location3">
       <h2>Location three</h2>
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
+        <input type="text" class="lat" placeholder="latitude">
+        <input type="text" class="long" placeholder="longitude">
       </div>
       <span class="add"> <i class="fas fa-plus-circle fa-lg"></i> Add New Locations </span>
       <button type="submit" id="location-submit">Submit</button>
@@ -237,6 +243,9 @@ $(document).ready(() => {
     const title3 = event.target.form[6].value;
     const description3 = event.target.form[7].value;
     const imgurl3 = event.target.form[8].value;
+    console.log(event.target.form[0].value);
+    console.log(initMap());
+    console.log("M:", markers.getPosition().lat())
     $.post(`/maps/${mapId[0]}`, {
       locations: JSON.stringify([
         {
