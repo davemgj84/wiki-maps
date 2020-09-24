@@ -6,9 +6,6 @@ $(document).ready(() => {
   let userId = [];
   let markers = [];
   
-  const emptyContainer = () => {
-    $('#side-bar').empty();
-  };
 
   const createMapForm = () => {
     const formTemplate =
@@ -83,12 +80,12 @@ $(document).ready(() => {
     $sideBar.append($sideBarForm);
   });
 
-  const createMapItem = (user) => {
-
+  const createMapItem = (map) => {
     const mapTemplate =
-      `<section class="items">
-      <div class="map-link">
-    <button type="submit" class="location-btn" id="${user.id}">${user.title}</button>
+    `<section class="items">
+    <div class="map-link">
+    <button type="submit" class="location-btn" id="${map.id}">${map.title}</button> <span id="${map.id}" class="edit"> <i class="fas fa-edit"> </i></span>
+    <span id="${map.id}" class="delete"><i class="fas fa-trash"></i> </span>
     </div>
     </section>
     `;
@@ -105,11 +102,36 @@ $(document).ready(() => {
 
   const loadUserMaps = (id) => {
     $.get(`/users/${id}`, (res) => {
-      console.log(res);
       renderUsersMaps(res.users);
     });
   };
 
+  // creates ajax delete function
+  $.delete = function(url, data, callback, type){
+    if ( $.isFunction(data) ){
+      type = type || callback,
+        callback = data,
+        data = {}
+    }
+    return $.ajax({
+      url: url,
+      type: 'DELETE',
+      success: callback,
+      data: data,
+      contentType: type
+    });
+  }
+
+  // Hardcoded user***
+  const $delete = $('#side-bar');
+  $delete.on('click', '.delete', (event) => {
+    console.log(event)
+    $.delete(`/maps/${event.currentTarget.id}/delete`, () => {
+      loadUserMaps(1);
+    });
+  });
+
+  // Hardcoded user***
   const $myMaps = $('#my-maps');
   $myMaps.click(() => {
     $(() => {
@@ -122,6 +144,7 @@ $(document).ready(() => {
     loadUserMaps(1);
   });
 
+  // Hardcoded user***
   $sideBar.on('click', '#location-submit', function(event) {
     event.preventDefault();
     const title1 = event.target.form[0].value;
@@ -157,61 +180,9 @@ $(document).ready(() => {
       }
     ])
     });
-    loadUserMaps(userId[0]);
+    loadUserMaps(1);
   });
 
+  getLocations('#side-bar')
 
-
-
-
-
-
-
-
-
-
-// EXPORT ME INTO WRAPPERS TO USE AS HELPER FUNCTIONS IN OUR ROUTES
-  function createMarkers(markers) {
-    for (const coords of markers) {
-      let contentString = `<h1>a town</h1><img src="${coords[2]}">`;
-      let latLng = new google.maps.LatLng(coords[0], coords[1]);
-      let marker = new google.maps.Marker({
-        position: latLng,
-        map: map
-      });
-      let infoWindow = new google.maps.InfoWindow({
-        content: contentString,
-        minWidth: 300,
-        maxWidth: 400
-      });
-      marker.addListener('click', function() {
-        infoWindow.open(map, marker);
-      });
-    }
-  }
-
-  const loadLocations = (id) => {
-    $.get(`/maps/${id}/locations`, (res) => {
-      for (const latlong of res.maps) {
-        markers.push([latlong.latitude, latlong.longitude]);
-      }
-    });
-  };
-
-  const $getLocation = $('#side-bar');
-  $getLocation.on('click', 'button', function(event) {
-    markers = [];
-    console.log(event.target);
-    loadLocations(event.target.id);
-    setTimeout(() => {
-      $(() => {
-        const options = {
-          zoom: 12,
-          center: { lat: 49.259660, lng: -123.107220 },
-        };
-        map = new google.maps.Map($('#map').get(0), options);
-        createMarkers(markers);
-      });
-    }, 100);
-  });
 });

@@ -104,7 +104,7 @@ module.exports = (db) => {
   });
 
   // Deletes a map
-  router.delete("/:id", (req, res) => {
+  router.delete("/:id/delete", (req, res) => {
     const values = req.params.id;
     db.query(`DELETE FROM maps WHERE id = $1`, [values])
       .then(data => {
