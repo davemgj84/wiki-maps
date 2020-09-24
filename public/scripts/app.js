@@ -21,6 +21,7 @@ $(document).ready(() => {
     `<section class="items">
     <div class="map-link">
     <button type="submit" class="location-btn" id="${map.id}">${map.title}</button>
+    <span class="favorite"><i class="fas fa-heart fa-lg"></i></span>
     </div>
     </section>
     `;
@@ -64,7 +65,7 @@ $(document).ready(() => {
       map = new google.maps.Map($('#map').get(0), options);
     });
     loadMaps();
-  }); 
+  });
 
   getLocations('.items')
   loadMaps();

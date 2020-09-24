@@ -1,0 +1,42 @@
+#new-map {
+  display: flex;
+  flex-direction: column;
+  padding: 3em;
+
+  h2 {
+    color: #FFFF;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0.6em;
+  }
+
+  #new-map-title {
+    margin: 1em;
+    outline: none;
+    padding: 0.5em;
+  }
+
+  #new-map-description {
+    margin: 1em;
+    outline: none;
+    padding: 0.5em;
+  }
+
+  #submit-btn {
+    width: 5em;
+    margin: 1em;
+    margin-left: 18em;
+    background-color: #99a4a0;
+    outline: none;
+    border: none;
+    padding: 0.5em;
+    color: #FFFF;
+    cursor: pointer;
+    &:hover {
+      color: #2b3430;
+      box-shadow: 0px 8px 10px #2b3430;;
+    }
+  }
+
+}
+

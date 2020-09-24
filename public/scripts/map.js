@@ -5,11 +5,12 @@ $(document).ready(() => {
   let mapId = [];
   let userId = [];
   let markers = [];
-  
+
 
   const createMapForm = () => {
     const formTemplate =
       `<form id="new-map">
+        <h2>Create New Map</h2>
         <input type="text" id="new-map-title" placeholder="title">
         <input type="text" id="new-map-description" placeholder="description">
         <button id="submit-btn" type="submit">Next</button>
@@ -22,23 +23,24 @@ $(document).ready(() => {
     const locationTemplate =
       `<form id="map-locations">
       <div id="location1">
-      <h5>location one</h5>
+      <h2>Location one</h2>
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
       </div>
       <div id="location2">
-      <h5>location one</h5>
+      <h2>Location two</h2>
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
       </div>
       <div id="location3">
-      <h5>location one</h5>
+      <h2>Location three</h2>
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
       </div>
+      <span class="add"> <i class="fas fa-plus-circle fa-lg"></i> Add New Locations </span>
       <button type="submit" id="location-submit">Submit</button>
     </form>
       `;
@@ -59,7 +61,7 @@ $(document).ready(() => {
     });
   });
 
-  // SUBMIT FORM FOR MAP TITLE/DESCRIPTION 
+  // SUBMIT FORM FOR MAP TITLE/DESCRIPTION
   const $sideBar = $('#side-bar');
   $sideBar.on('click', '#submit-btn', function(event) {
     event.preventDefault();
@@ -74,7 +76,7 @@ $(document).ready(() => {
         mapId.push(data.maps.id);
         userId.push(data.maps.user_id);
       });
-    
+
     emptyContainer();
     const $sideBarForm = createLocationForm();
     $sideBar.append($sideBarForm);
@@ -84,8 +86,11 @@ $(document).ready(() => {
     const mapTemplate =
     `<section class="items">
     <div class="map-link">
-    <button type="submit" class="location-btn" id="${map.id}">${map.title}</button> <span id="${map.id}" class="edit"> <i class="fas fa-edit"> </i></span>
-    <span id="${map.id}" class="delete"><i class="fas fa-trash"></i> </span>
+    <button type="submit" class="location-btn" id="${map.id}">${map.title}</button>
+    <span class="edit-delete">
+    <span id="${map.id}" class="edit"> <i class="fas fa-edit fa-lg"> </i></span>
+    <span id="${map.id}" class="delete"><i class="fas fa-trash fa-lg"></i> </span>
+    </span>
     </div>
     </section>
     `;
