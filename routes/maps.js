@@ -85,7 +85,7 @@ module.exports = (db) => {
     const locations = req.body.locations;
     const parsed = JSON.parse(locations);
     const promises = [];
-    
+
     for (const location of parsed) {
       const promise = db.query(`INSERT INTO locations (map_id, title, description, image_url, latitude, longitude)
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [values, location.title, location.description, location.image_url, location.latitude, location.longitude]);
@@ -118,14 +118,14 @@ module.exports = (db) => {
   });
 
   // Edits a location
-  router.patch("/:id", (req, res) => {
+  router.patch("/:id/edit", (req, res) => {
     const values = req.params.id;
     const { title, description, image_url, latitude, longitude, id } = req.body;
     const query = `UPDATE locations SET title = $1, description = $2, image_url = $3, latitude = $4, longitude = $5
     WHERE map_id = $6  AND id = $7 RETURNING *;`;
     db.query(query, [title, description, image_url, latitude, longitude, values, id])
       .then(data => {
-        const maps = data.rows[0];
+        const maps = data.rows;
         res.json({ maps });
       })
       .catch(err => {

@@ -5,7 +5,7 @@ $(document).ready(() => {
   let mapId = [];
   let userId = [];
   let markers = [];
-
+  let editButton = [];
 
   const createMapForm = () => {
     const formTemplate =
@@ -27,18 +27,24 @@ $(document).ready(() => {
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
+        <input type="text" class="lat" placeholder="latitude">
+        <input type="text" class="long" placeholder="longitude">
       </div>
       <div id="location2">
       <h2>Location two</h2>
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
+        <input type="text" class="lat" placeholder="latitude">
+        <input type="text" class="long" placeholder="longitude">
       </div>
       <div id="location3">
       <h2>Location three</h2>
         <input type="text" id="title" placeholder="title">
         <input type="text" id="description" placeholder="description">
         <input type="url" id="img-url" placeholder="imgURL">
+        <input type="text" class="lat" placeholder="latitude">
+        <input type="text" class="long" placeholder="longitude">
       </div>
       <span class="add"> <i class="fas fa-plus-circle fa-lg"></i> Add New Locations </span>
       <button type="submit" id="location-submit">Submit</button>
@@ -46,6 +52,37 @@ $(document).ready(() => {
       `;
     return locationTemplate;
   };
+
+  //
+  const createEditForm = (data) => {
+    const editForm =
+      `<form id="edit-locations">
+      <div id="edit-location1">
+      <h2>Location one</h2>
+        <input type="text" id="title" placeholder="title" value="${data.maps[0].title}">
+        <input type="text" id="description" placeholder="description" value="${data.maps[0].description}">
+        <input type="url" id="img-url" placeholder="imgURL" value="${data.maps[0].image_url}">
+        <button type="submit" id="edit-submit-1">Edit</button>
+      </div>
+      <div id="edit-location2">
+      <h2>Location two</h2>
+        <input type="text" id="title" placeholder="title" value="${data.maps[1].title}">
+        <input type="text" id="description" placeholder="description" value="${data.maps[1].description}">
+        <input type="url" id="img-url" placeholder="imgURL" value="${data.maps[1].image_url}">
+        <button type="submit" id="edit-submit-2">Edit</button>
+      </div>
+      <div id="edit-location3">
+      <h2>Location three</h2>
+        <input type="text" id="title" placeholder="title" value="${data.maps[2].title}">
+        <input type="text" id="description" placeholder="description" value="${data.maps[2].description}">
+        <input type="url" id="img-url" placeholder="imgURL" value="${data.maps[2].image_url}">
+        <button type="submit" id="edit-submit-3">Edit</button>
+      </div>
+    </form>
+      `;
+    return editForm;
+  };
+
 
   const $create = $('#create');
   $create.on('click', () => {
@@ -84,7 +121,7 @@ $(document).ready(() => {
 
   const createMapItem = (map) => {
     const mapTemplate =
-    `<section class="items">
+      `<section class="items">
     <div class="map-link">
     <button type="submit" class="location-btn" id="${map.id}">${map.title}</button>
     <span class="edit-delete">
@@ -107,14 +144,59 @@ $(document).ready(() => {
 
   const loadUserMaps = (id) => {
     $.get(`/users/${id}`, (res) => {
-      console.log("res and res.users", res, res.users)
       renderUsersMaps(res.users);
     });
   };
 
+  // function to edit locations
+  $.patch = function(url, data, callback, type) {
+    if ($.isFunction(data)) {
+      type = type || callback,
+        callback = data,
+        data = {}
+    }
+    return $.ajax({
+      url: url,
+      type: 'PATCH',
+      success: callback,
+      data: data,
+      contentType: type
+    });
+  }
+
+  // GET request to edit locations
+  const $edit = $('#side-bar');
+  $edit.on('click', '.edit', (event) => {
+    $.get(`/maps/${event.currentTarget.id}/locations`, (res) => {
+      editButton.push(event.currentTarget.id);
+      const locations = res;
+      emptyContainer();
+      const editForm = createEditForm(locations);
+      $('#side-bar').append(editForm);
+    })
+  });
+
+  // hardcoded user - not changing lat-long yet
+  $edit.on('click', 'edit-submit-1', (event) => {
+    preventDefault();
+    const title1 = event.target.form[0].value;
+    console.log(event.target.form[0].value)
+    const description1 = event.target.form[1].value;
+    const imgurl1 = event.target.form[2].value;
+    $.patch(`/maps/${editButton[0]}/edit`, {
+      title: title1,
+      description: description1,
+      image_url: imgurl1,
+      latitude: 49.259660,
+      longitude: -123.107220,
+      id: 1
+    });
+  });
+
+
   // creates ajax delete function
-  $.delete = function(url, data, callback, type){
-    if ( $.isFunction(data) ){
+  $.delete = function(url, data, callback, type) {
+    if ($.isFunction(data)) {
       type = type || callback,
         callback = data,
         data = {}
@@ -128,10 +210,9 @@ $(document).ready(() => {
     });
   }
 
-  // Hardcoded user***
+  // Hardcoded user*** delete map
   const $delete = $('#side-bar');
   $delete.on('click', '.delete', (event) => {
-    console.log(event)
     $.delete(`/maps/${event.currentTarget.id}/delete`, () => {
       loadUserMaps(1);
     });
@@ -162,29 +243,33 @@ $(document).ready(() => {
     const title3 = event.target.form[6].value;
     const description3 = event.target.form[7].value;
     const imgurl3 = event.target.form[8].value;
-    $.post(`/maps/${mapId[0]}`, { locations: JSON.stringify([
-      {
-        title: title1,
-        description: description1,
-        image_url: imgurl1,
-        latitude: 49.259660,
-        longitude: -123.107220
-      },
-      {
-        title: title2,
-        description: description2,
-        image_url: imgurl2,
-        latitude: 49.259660,
-        longitude: -123.107220
-      },
-      {
-        title: title3,
-        description: description3,
-        image_url: imgurl3,
-        latitude: 49.259660,
-        longitude: -123.107220
-      }
-    ])
+    console.log(event.target.form[0].value);
+    console.log(initMap());
+    console.log("M:", markers.getPosition().lat())
+    $.post(`/maps/${mapId[0]}`, {
+      locations: JSON.stringify([
+        {
+          title: title1,
+          description: description1,
+          image_url: imgurl1,
+          latitude: 49.282897,
+          longitude: -123.120386
+        },
+        {
+          title: title2,
+          description: description2,
+          image_url: imgurl2,
+          latitude: 49.251970,
+          longitude: -123.067680
+        },
+        {
+          title: title3,
+          description: description3,
+          image_url: imgurl3,
+          latitude: 49.263910,
+          longitude: -123.098690
+        }
+      ])
     });
     loadUserMaps(1);
   });
