@@ -6,7 +6,6 @@ $(document).ready(() => {
   let userId = [];
   let markers = [];
   
-
   const emptyContainer = () => {
     $('#side-bar').empty();
   };
@@ -47,9 +46,7 @@ $(document).ready(() => {
     </form>
       `;
     return locationTemplate;
-  }
-
-  
+  };
 
   const $create = $('#create');
   $create.on('click', () => {
@@ -65,20 +62,21 @@ $(document).ready(() => {
     });
   });
 
+  // SUBMIT FORM FOR MAP TITLE/DESCRIPTION 
   const $sideBar = $('#side-bar');
-  $sideBar.on('click', '#submit-btn', function(event){
+  $sideBar.on('click', '#submit-btn', function(event) {
     event.preventDefault();
     const title = event.target.form[0].value;
     const description = event.target.form[1].value;
-    $.post('/maps', { 
+    $.post('/maps', {
       user_id: 1,
       title: title,
-      description: description 
+      description: description
     })
-    .done(function( data ) {
-     mapId.push(data.maps.id);
-     userId.push(data.maps.user_id)
-    });
+      .done(function(data) {
+        mapId.push(data.maps.id);
+        userId.push(data.maps.user_id);
+      });
     
     emptyContainer();
     const $sideBarForm = createLocationForm();
@@ -100,7 +98,6 @@ $(document).ready(() => {
   const renderUsersMaps = (data) => {
     emptyContainer();
     for (const user of data) {
-      // maps.push(map);
       const $map = createMapItem(user);
       $('#side-bar').append($map);
     }
@@ -115,7 +112,6 @@ $(document).ready(() => {
 
   const $myMaps = $('#my-maps');
   $myMaps.click(() => {
-    loadUserMaps(userId[0]);
     $(() => {
       const options = {
         zoom: 12,
@@ -123,8 +119,8 @@ $(document).ready(() => {
       };
       map = new google.maps.Map($('#map').get(0), options);
     });
-    loadUserMaps(userId[0]);
-  })
+    loadUserMaps(1);
+  });
 
   $sideBar.on('click', '#location-submit', function(event) {
     event.preventDefault();
@@ -138,32 +134,43 @@ $(document).ready(() => {
     const description3 = event.target.form[7].value;
     const imgurl3 = event.target.form[8].value;
     $.post(`/maps/${mapId[0]}`, { locations: JSON.stringify([
-    {
-      title: title1,
-      description: description1,
-      image_url: imgurl1,
-      latitude: 49.259660,
-      longitude: -123.107220
-    },
-    {
-      title: title2,
-      description: description2,
-      image_url: imgurl2,
-      latitude: 49.259660,
-      longitude: -123.107220
-    },
-    {
-      title: title3,
-      description: description3,
-      image_url: imgurl3,
-      latitude: 49.259660,
-      longitude: -123.107220
-    }
+      {
+        title: title1,
+        description: description1,
+        image_url: imgurl1,
+        latitude: 49.259660,
+        longitude: -123.107220
+      },
+      {
+        title: title2,
+        description: description2,
+        image_url: imgurl2,
+        latitude: 49.259660,
+        longitude: -123.107220
+      },
+      {
+        title: title3,
+        description: description3,
+        image_url: imgurl3,
+        latitude: 49.259660,
+        longitude: -123.107220
+      }
     ])
-  })
-  loadUserMaps(userId[0]);
-  })
+    });
+    loadUserMaps(userId[0]);
+  });
 
+
+
+
+
+
+
+
+
+
+
+// EXPORT ME INTO WRAPPERS TO USE AS HELPER FUNCTIONS IN OUR ROUTES
   function createMarkers(markers) {
     for (const coords of markers) {
       let contentString = `<h1>a town</h1><img src="${coords[2]}">`;
@@ -194,7 +201,7 @@ $(document).ready(() => {
   const $getLocation = $('#side-bar');
   $getLocation.on('click', 'button', function(event) {
     markers = [];
-    console.log(event.target)
+    console.log(event.target);
     loadLocations(event.target.id);
     setTimeout(() => {
       $(() => {
