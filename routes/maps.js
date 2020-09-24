@@ -85,6 +85,7 @@ module.exports = (db) => {
     const locations = req.body.locations;
     const parsed = JSON.parse(locations);
     const promises = [];
+    
     for (const location of parsed) {
       const promise = db.query(`INSERT INTO locations (map_id, title, description, image_url, latitude, longitude)
       VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [values, location.title, location.description, location.image_url, location.latitude, location.longitude]);
@@ -103,7 +104,7 @@ module.exports = (db) => {
   });
 
   // Deletes a map
-  router.delete("/:id", (req, res) => {
+  router.delete("/:id/delete", (req, res) => {
     const values = req.params.id;
     db.query(`DELETE FROM maps WHERE id = $1`, [values])
       .then(data => {
