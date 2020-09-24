@@ -1,12 +1,12 @@
 // See: https://sass-lang.com/
 
+body {
+  font-family: 'Marcellus SC', serif;
+}
+
 body #map, body #side-bar {
   display: flex;
   flex-direction: row;
-
-  h1 {
-    color: #244751;
-  }
 }
 
 body #side-bar {
@@ -14,7 +14,9 @@ body #side-bar {
 }
 
 #map {
-  height: 92vh;
+  // border: 3px solid;
+  // border-color: #c4ac7c;
+  height: 90vh;
   width: 75vw;
   float: right;
 }
