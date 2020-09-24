@@ -9,6 +9,7 @@ function initMap() {
   const searchBox = new google.maps.places.SearchBox(input);
   const geocoder = new google.maps.Geocoder();
 
+
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
   })
@@ -18,7 +19,10 @@ function initMap() {
     searchBox.setBounds(map.getBounds());
   });
 
-
+  google.maps.event.trigger(input, 'focus')
+  google.maps.event.trigger(input, 'keydown', {
+      keyCode: 13
+  });
   let markers = [];
   //The below callback will fire when our user selects a prediction from the list
   searchBox.addListener('places_changed', () => {
