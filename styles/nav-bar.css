@@ -1,0 +1,65 @@
+nav {
+  font-family: 'Marcellus SC', serif;
+  padding-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 10vh;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
+  background-color: #2d433a;
+}
+
+#logo {
+  padding-left: 20px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 2.5em;
+  color: #FFFF;
+  cursor: pointer;
+}
+
+#logo:hover {
+  color: #c4ac7c;
+}
+
+.nav-links {
+  padding-right: 20px;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 30%;
+  color: #FFFF;
+  height: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-links li {
+  list-style: none;
+  letter-spacing: 2px;
+  font-size: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  cursor: pointer;
+}
+
+.nav-links li:hover {
+  color: #c4ac7c;
+}
+/*# sourceMappingURL=nav-bar.css.map */

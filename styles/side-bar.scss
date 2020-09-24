@@ -1,0 +1,87 @@
+
+#side-bar {
+  height: 92vh;
+  width: 25vw;
+  margin-top: 10vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #566861;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  color: #FFFF;
+
+  .map-link {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+  }
+
+  .location-btn {
+    display: flex;
+    justify-content: space-between;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    color: #FFFF;
+    font-size: 2em;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 0.5em;
+    &:hover {
+      color: #c4ac7c;
+      text-shadow: 0px 10px 10px #2b3430;
+    }
+  }
+
+  .favorite {
+    padding-top: 1.76em;
+    padding-right: 3em;
+    &:hover {
+      color: #e31b23;
+      text-shadow: 0px 5px 10px #2b3430;
+    }
+  }
+
+  .edit-delete {
+    padding: 1.75em;
+    padding-right: 2.5em;
+  }
+
+  .edit{
+    padding-right: 0.8em;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      color: #6e7868;
+      text-shadow: 0px 5px 10px #2b3430;
+    }
+  }
+
+  .delete {
+    border: 0;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    padding-left: 0.8em;
+    &:hover {
+      color: #B33A3A;
+      text-shadow: 0px 5px 10px #2b3430;
+    }
+  }
+
+  .new-map {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 1em;
+    cursor: pointer;
+    color: #FFFF;
+  }
+
+}

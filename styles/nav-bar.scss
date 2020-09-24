@@ -1,0 +1,93 @@
+
+nav {
+  font-family: 'Marcellus SC', serif;
+  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
+  background-color: #2d433a;
+}
+
+#logo {
+  padding-left: 20px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 2.5em;
+  color: #FFFF;
+  cursor: pointer;
+  &:hover {
+    color: #c4ac7c;
+  }
+}
+
+.nav-links {
+  padding-right: 20px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  color: #FFFF;
+  height: auto;
+  align-items: center;
+}
+
+.nav-links li {
+  list-style: none;
+  letter-spacing: 2px;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  &:hover {
+    color: #c4ac7c;
+  }
+}
+
+
+// OLD BURGER CODE:
+
+// .nav-active {
+//   transform: translateX(0%);
+// }
+
+// .burger {
+//   display: block;
+//   cursor: pointer;
+// }
+
+// .burger div {
+//   width: 25px;
+//   height: 3px;
+//   margin: 5px;
+//   background-color: beige;
+//   transition: transform 0.5s ease-in;
+// }
+
+// body {
+//   overflow-x: hidden;
+// }
+
+// @keyframes navLinkFade {
+//   from {
+//     opacity: 0;
+//     transfrom: translateX(50px);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: translateX(0px);
+//   }
+// }
+
+// .toggle .line1{
+// transform: rotate(-45deg) translate(-5px, 6px);
+// }
+
+// .toggle .line2{
+//     opacity: 0;
+// }
+
+// .toggle .line3{
+//   transform: rotate(45deg) translate(-5px, -6px);
+// }

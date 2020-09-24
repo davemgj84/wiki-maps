@@ -1,17 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+  <title>WIKI-MAPS</title>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/7aa139eb66.js" crossorigin="anonymous"></script>
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav-bar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/side-bar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/create.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/locations.css" type="text/css" />
+
+</head>
+
+<nav>
+  <span id="logo">WIKI-MAPS</span>
+  <form>
+    <input class="form" id="search" type="text" placeholder="Search..."/>
+  </form><button type="submit" class="submit-btn"> Submit </button>
+  <ul class="nav-links">
+    <li id="create"> Create </li>
+    <li id="my-maps"> My Maps </li>
+    <li id="browse"> Browse </li>
+    <li id="logout"> Logout </li>
+  </ul>
+
+</nav>
+
+<body>
+
+  <!-- GOOGLE MAP -->
+  <div id="map"></div>
+
+  <!-- SIDE NAV BAR -->
+
+  <section id="side-bar">
+
+    <!-- Maps list is populated in this section -->
+    <section class="items"></section>
+
+  </section>
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script src="/scripts/helpers.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script src="/scripts/map.js"></script>
+  <script src="/scripts/search.js"></script>
+
+  <!-- Please remove google api before committing -->
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=places&key=">
+    </script>
+
+</body>
+
 </html>
