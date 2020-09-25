@@ -3,6 +3,11 @@ const emptyContainer = () => {
   $('#side-bar').empty();
 };
 
+const header = (title) => {
+  const headerTemplate = `<h3 class="maps-list">${title}</h3>`;
+  return headerTemplate;
+};
+
 const createMarkers = (markers) => {
   for (const coords of markers) {
     let contentString = `<h1>Vancouver Art Gallery</h1><h2>Art!</h2><img src="https://img.dealdrop.com/logos/shop.vanartgallery.bc.ca-logo-coupons.png">`;

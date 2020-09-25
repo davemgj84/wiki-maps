@@ -14,7 +14,7 @@ nav {
   padding-left: 20px;
   text-transform: uppercase;
   letter-spacing: 5px;
-  font-size: 2.5em;
+  font-size: 3em;
   color: #FFFF;
   cursor: pointer;
   &:hover {
@@ -23,7 +23,7 @@ nav {
 }
 
 .nav-links {
-  padding-right: 20px;
+  padding-right: 1em;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -31,12 +31,14 @@ nav {
   color: #FFFF;
   height: auto;
   align-items: center;
+  position: relative;
+  right: 1.75em;
 }
 
 .nav-links li {
   list-style: none;
   letter-spacing: 2px;
-  font-size: 1.5em;
+  font-size: 2em;
   display: flex;
   flex-direction: row;
   cursor: pointer;

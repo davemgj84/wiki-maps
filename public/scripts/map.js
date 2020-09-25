@@ -351,6 +351,8 @@ $(document).ready(() => {
 
   const renderUsersMaps = (data) => {
     emptyContainer();
+    const $header = header("My Maps");
+    $('#side-bar').append($header);
     for (const user of data) {
       const $map = createMapItem(user);
       $('#side-bar').append($map);

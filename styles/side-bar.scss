@@ -13,6 +13,17 @@
   flex-direction: column;
   color: #FFFF;
 
+  .maps-list {
+    color: #FFFF;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: 2.2em;
+    margin: 0.6em;
+    padding-left: 0.75em;
+    padding-top: 1em;
+    padding-bottom: 1.75em;
+  }
+
   .map-link {
     display: flex;
     justify-content: space-between;

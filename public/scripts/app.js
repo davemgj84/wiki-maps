@@ -245,6 +245,8 @@ $(document).ready(() => {
 
   const renderMaps = (data) => {
     emptyContainer();
+    const $header = header("Browse Maps");
+    $('#side-bar').append($header);
     for (const map of data) {
       // maps.push(map);
       const $map = createMapItem(map);
