@@ -26,5 +26,5 @@ Clone this repo and cd into the project folder. Run `npm install` to install dep
 
 ## Screenshots
 
-![Homepage]()
-![Favorites]()
+![Homepage](https://github.com/davemgj84/wiki-maps/blob/master/docs/homepage.png?raw=true)
+![Favorites](https://github.com/davemgj84/wiki-maps/blob/master/docs/favorites.png?raw=true)
