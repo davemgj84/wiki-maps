@@ -1,6 +1,6 @@
 # WIKI-MAPS
 
-- An interactive map in which users can create and favorite thier own personalized maps, using the Google Maps API.
+- An interactive map in which users can create and favorite their own personalized maps, using the Google Maps API.
 
 - This Project was created for the Lighthouse Labs Web Development Bootcamp Midterm.
 
